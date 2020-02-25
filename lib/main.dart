@@ -75,8 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     default:
                       break;
                   }
-                  if (snapshot == null) return CircularProgressIndicator();
-                  if (snapshot.error != null) print(snapshot.error);
+                  if (snapshot.hasError) {
+                    print(snapshot.error);
+                  }
                   return snapshot.hasData ? Image.network(snapshot.data) : CircularProgressIndicator();
                 },
               );
